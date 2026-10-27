@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>面试综合评估报告_{候选人姓名}_{岗位名称}</title>
+<style>
+:root{
+  --bg-primary:#070b14;--bg-secondary:#0b1120;--bg-card:#111827;--bg-card-hover:#182032;
+  --bg-elevated:#1a2332;--bg-code:#080f1a;--bg-input:#0d1522;
+  --text-primary:#e8ecf1;--text-secondary:#8f9bb3;--text-muted:#546078;
+  --accent:#0068ff;--accent-hover:#1a7aff;--accent-light:rgba(0,104,255,.1);--accent-ring:rgba(0,104,255,.22);
+  --success:#0abb87;--success-bg:rgba(10,187,135,.1);--warning:#f5a623;--warning-bg:rgba(245,166,35,.1);
+  --error:#f44b5b;--purple:#8b5cf6;--purple-bg:rgba(139,92,246,.1);--info:#3b82f6;
+  --border:rgba(255,255,255,.06);--border-light:rgba(255,255,255,.04);--border-focus:rgba(0,104,255,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 32px rgba(0,0,0,.5);
+  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-full:9999px;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"SF Mono","Fira Code","Cascadia Code",Consolas,monospace;
+  --max-width:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;line-height:1.65;
+  color:var(--text-primary);background:var(--bg-primary);overflow-x:hidden;
+  background-image:radial-gradient(ellipse 70% 55% at 50% -5%,rgba(0,104,255,.06) 0%,transparent 70%);
+  background-attachment:fixed;
+}
+h1,h2,h3,h4{color:var(--text-primary);font-weight:600;line-height:1.3;letter-spacing:-0.02em}
+.container{max-width:var(--max-width);margin:0 auto;padding:2.5rem 1.5rem}
+.header{text-align:center;padding-bottom:1.75rem;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.header .company{font-size:.7rem;color:var(--text-muted);letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;font-weight:500}
+.header .badge-line{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:.5rem}
+.header .badge-line .line{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--accent-ring),transparent)}
+.header .badge-line .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent-ring)}
+.header h1{
+  font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;
+  background:linear-gradient(135deg,var(--text-primary) 0%,var(--accent) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.header .subtitle{font-size:.8rem;color:var(--text-muted);letter-spacing:2px;margin-top:.4rem;font-weight:400}
+.info-section{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);
+  padding:1.5rem 1.75rem;margin-bottom:2rem;
+}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem 2rem}
+.info-item .label{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.info-item .value{font-size:.9rem;font-weight:500;color:var(--text-primary);margin-top:.15rem}
+.info-item .value .highlight{color:var(--accent)}
+.section-title{
+  font-size:1.1rem;font-weight:600;color:var(--text-primary);
+  margin:2rem 0 1rem 0;padding-left:1rem;padding-bottom:.5rem;
+  border-left:4px solid var(--accent);letter-spacing:-0.02em;
+  display:flex;align-items:center;gap:.5rem;
+}
+.section-title .num{font-size:.75rem;color:var(--text-muted);font-weight:400}
+.score-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:.5rem}
+.score-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.5rem 1.25rem;text-align:center;transition:all .25s;
+}
+.score-card:hover{border-color:var(--accent-ring);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.score-card .label{font-size:.75rem;color:var(--text-muted);letter-spacing:1.5px;font-weight:500}
+.score-card .number{font-size:2rem;font-weight:700;margin:.3rem 0 .1rem 0;letter-spacing:-0.03em}
+.score-card .number.high{color:var(--success)}
+.score-card .number.medium{color:var(--accent)}
+.score-card .number.low{color:var(--error)}
+.score-card .unit{font-size:.75rem;color:var(--text-muted)}
+.score-card .badge{
+  display:inline-block;padding:.18rem .65rem;border-radius:var(--radius-full);
+  font-size:.7rem;font-weight:600;margin-top:.4rem;letter-spacing:.5px;
+}
+.badge.excellent{background:var(--success-bg);color:var(--success);border:1px solid rgba(10,187,135,.2)}
+.badge.qualified{background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-ring)}
+.badge.poor{background:rgba(244,75,91,.1);color:var(--error);border:1px solid rgba(244,75,91,.2)}
+.final-score{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
+  margin:.75rem 0 2rem 0;transition:all .25s;
+}
+.final-score:hover{border-color:var(--accent-ring);box-shadow:var(--shadow-md)}
+.final-score .left{display:flex;align-items:center;gap:.85rem}
+.final-score .icon{
+  width:40px;height:40px;border-radius:var(--radius-md);
+  background:linear-gradient(135deg,var(--accent),var(--purple));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:700;flex-shrink:0;
+}
+.final-score .meta{display:flex;flex-direction:column}
+.final-score .meta .label{font-size:.68rem;color:var(--text-muted);letter-spacing:1.5px;font-weight:600;text-transform:uppercase}
+.final-score .meta .rating{font-size:.95rem;font-weight:600;color:var(--text-primary);margin-top:.1rem}
+.final-score .score-display{display:flex;align-items:baseline;gap:.25rem}
+.final-score .score-display .number{font-size:1.35rem;font-weight:700;color:var(--accent);letter-spacing:-0.03em}
+.final-score .score-display .unit{font-size:.72rem;color:var(--text-muted)}
+.detail-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:.5rem}
+.detail-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.detail-table thead{background:var(--bg-elevated)}
+.detail-table th{
+  color:var(--text-primary);font-weight:600;text-align:left;padding:.65rem .85rem;
+  font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+.detail-table td{
+  padding:.65rem .85rem;border-bottom:1px solid var(--border-light);
+  vertical-align:top;line-height:1.6;color:var(--text-secondary);
+}
+.detail-table tr:last-child td{border-bottom:none}
+.detail-table tr:hover td{background:var(--bg-card-hover)}
+.detail-table .q-col{font-weight:600;color:var(--text-primary);white-space:nowrap}
+.detail-table .score-badge{
+  display:inline-block;padding:.1rem .6rem;border-radius:var(--radius-full);
+  font-weight:600;font-size:.78rem;
+}
+.score-badge.s-excellent{background:var(--success-bg);color:var(--success)}
+.score-badge.s-qualified{background:var(--accent-light);color:var(--accent)}
+.score-badge.s-poor{background:rgba(244,75,91,.1);color:var(--error)}
+.detail-table .answer-text{color:var(--text-secondary);max-width:260px;word-break:break-word}
+.detail-table .ref-text{color:var(--text-muted);font-size:.78rem;max-width:220px;word-break:break-word}
+.comment-box{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.5rem 1.75rem;border-left:4px solid var(--accent);
+}
+.comment-box .text{color:var(--text-secondary);line-height:1.85;font-size:.875rem}
+.comment-box .text strong{color:var(--text-primary);font-weight:600}
+.footer{
+  text-align:center;border-top:1px solid var(--border);padding-top:1.25rem;margin-top:2rem;
+  font-size:.7rem;color:var(--text-muted);letter-spacing:1px;font-weight:400;
+}
+@media(max-width:768px){
+  .container{padding:1.5rem 1rem}
+  .header h1{font-size:1.35rem}
+  .info-grid{grid-template-columns:1fr 1fr;gap:.4rem 1rem}
+  .info-section{padding:1.25rem 1.25rem}
+  .score-summary{grid-template-columns:1fr 1fr}
+  .final-score{flex-direction:column;gap:.75rem;text-align:center}
+  .final-score .left{flex-direction:column;align-items:center}
+  .final-score .score-display{justify-content:center}
+  .detail-table{font-size:.78rem}
+  .detail-table th,.detail-table td{padding:.5rem .6rem}
+  .detail-table .ref-text{display:none}
+  .comment-box{padding:1.25rem 1.25rem}
+}
+@media(max-width:480px){
+  .container{padding:1rem .75rem}
+  .info-grid{grid-template-columns:1fr}
+  .score-summary{grid-template-columns:1fr}
+  .header h1{font-size:1.15rem}
+}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
+@media print{
+  body{background:var(--bg-primary);padding:0}
+  .container{box-shadow:none;border:none;border-radius:0;padding:2rem}
+  .score-card:hover{transform:none;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="company">HENGXIN DIGITAL TECHNOLOGY</div>
+    <div class="badge-line">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+    <h1>面试综合评估报告</h1>
+    <div class="subtitle">AI 面试天团 · 多维度人才测评</div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">候选人姓名</div>
+        <div class="value">{候选人姓名}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">毕业院校</div>
+        <div class="value">{学校}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">联系邮箱</div>
+        <div class="value">{邮箱}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">面试岗位</div>
+        <div class="value"><span class="highlight">{岗位名称}</span></div>
+      </div>
+      <div class="info-item">
+        <div class="label">面试日期</div>
+        <div class="value">{面试日期}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">报告生成</div>
+        <div class="value">{报告生成日期}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="num">01</span> 各维度得分汇总
+  </div>
+  <div class="score-summary">
+    <div class="score-card">
+      <div class="label">技术面试</div>
+      <div class="number {技术得分等级}">{技术平均分}</div>
+      <div class="unit">/ 10.0</div>
+      <div class="badge {技术徽章}">{技术评级}</div>
+    </div>
+    <div class="score-card">
+      <div class="label">HR 面试</div>
+      <div class="number {HR得分等级}">{HR平均分}</div>
+      <div class="unit">/ 10.0</div>
+      <div class="badge {HR徽章}">{HR评级}</div>
+    </div>
+    <div class="score-card" style="border-left:4px solid var(--accent);">
+      <div class="label">综合评分</div>
+      <div class="number" style="color:var(--accent);">{综合总分}</div>
+      <div class="unit">/ 10.0</div>
+    </div>
+  </div>
+
+  <div class="final-score">
+    <div class="left">
+      <div class="icon">&#9733;</div>
+      <div class="meta">
+        <div class="label">综合评级</div>
+        <div class="rating">{综合评级}</div>
+      </div>
+    </div>
+    <div class="score-display">
+      <span class="number">{综合总分}</span>
+      <span class="unit">/ 10.0</span>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="num">02</span> 技术面试各题评分明细
+  </div>
+  <div class="detail-table-wrap">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th style="width:6%;">题号</th>
+          <th style="width:20%;">题目</th>
+          <th style="width:12%;">考察目的</th>
+          <th style="width:18%;">候选人答案</th>
+          <th style="width:18%;">参考答案</th>
+          <th style="width:8%;">得分</th>
+          <th style="width:18%;">评分依据</th>
+        </tr>
+      </thead>
+      <tbody>
+        {技术各题明细行}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">
+    <span class="num">03</span> HR 面试各题评分明细
+  </div>
+  <div class="detail-table-wrap">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th style="width:6%;">题号</th>
+          <th style="width:20%;">题目</th>
+          <th style="width:12%;">考察目的</th>
+          <th style="width:18%;">候选人答案</th>
+          <th style="width:18%;">参考答案</th>
+          <th style="width:8%;">得分</th>
+          <th style="width:18%;">评分依据</th>
+        </tr>
+      </thead>
+      <tbody>
+        {HR各题明细行}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">
+    <span class="num">04</span> 综合评语
+  </div>
+  <div class="comment-box">
+    <div class="text">{综合评语}</div>
+  </div>
+
+  <div class="footer">
+    本报告由 AI 面试天团 · 人才测评专员 自动生成 &nbsp;|&nbsp; 仅供内部参考使用
+  </div>
+
+</div>
+</body>
+</html>

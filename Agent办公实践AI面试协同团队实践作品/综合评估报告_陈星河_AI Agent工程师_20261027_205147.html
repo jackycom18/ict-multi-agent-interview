@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>面试综合评估报告_陈星河_AI Agent工程师</title>
+<style>
+:root{
+  --bg-primary:#070b14;--bg-secondary:#0b1120;--bg-card:#111827;--bg-card-hover:#182032;
+  --bg-elevated:#1a2332;--bg-code:#080f1a;--bg-input:#0d1522;
+  --text-primary:#e8ecf1;--text-secondary:#8f9bb3;--text-muted:#546078;
+  --accent:#0068ff;--accent-hover:#1a7aff;--accent-light:rgba(0,104,255,.1);--accent-ring:rgba(0,104,255,.22);
+  --success:#0abb87;--success-bg:rgba(10,187,135,.1);--warning:#f5a623;--warning-bg:rgba(245,166,35,.1);
+  --error:#f44b5b;--purple:#8b5cf6;--purple-bg:rgba(139,92,246,.1);--info:#3b82f6;
+  --border:rgba(255,255,255,.06);--border-light:rgba(255,255,255,.04);--border-focus:rgba(0,104,255,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 32px rgba(0,0,0,.5);
+  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-full:9999px;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"SF Mono","Fira Code","Cascadia Code",Consolas,monospace;
+  --max-width:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;line-height:1.65;
+  color:var(--text-primary);background:var(--bg-primary);overflow-x:hidden;
+  background-image:radial-gradient(ellipse 70% 55% at 50% -5%,rgba(0,104,255,.06) 0%,transparent 70%);
+  background-attachment:fixed;
+}
+h1,h2,h3,h4{color:var(--text-primary);font-weight:600;line-height:1.3;letter-spacing:-0.02em}
+.container{max-width:var(--max-width);margin:0 auto;padding:2.5rem 1.5rem}
+.header{text-align:center;padding-bottom:1.75rem;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.header .company{font-size:.7rem;color:var(--text-muted);letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;font-weight:500}
+.header .badge-line{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:.5rem}
+.header .badge-line .line{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--accent-ring),transparent)}
+.header .badge-line .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent-ring)}
+.header h1{
+  font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;
+  background:linear-gradient(135deg,var(--text-primary) 0%,var(--accent) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.header .subtitle{font-size:.8rem;color:var(--text-muted);letter-spacing:2px;margin-top:.4rem;font-weight:400}
+.info-section{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);
+  padding:1.5rem 1.75rem;margin-bottom:2rem;
+}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem 2rem}
+.info-item .label{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.info-item .value{font-size:.9rem;font-weight:500;color:var(--text-primary);margin-top:.15rem}
+.info-item .value .highlight{color:var(--accent)}
+.section-title{
+  font-size:1.1rem;font-weight:600;color:var(--text-primary);
+  margin:2rem 0 1rem 0;padding-left:1rem;padding-bottom:.5rem;
+  border-left:4px solid var(--accent);letter-spacing:-0.02em;
+  display:flex;align-items:center;gap:.5rem;
+}
+.section-title .num{font-size:.75rem;color:var(--text-muted);font-weight:400}
+.score-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:.5rem}
+.score-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.5rem 1.25rem;text-align:center;transition:all .25s;
+}
+.score-card:hover{border-color:var(--accent-ring);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.score-card .label{font-size:.75rem;color:var(--text-muted);letter-spacing:1.5px;font-weight:500}
+.score-card .number{font-size:2rem;font-weight:700;margin:.3rem 0 .1rem 0;letter-spacing:-0.03em}
+.score-card .number.high{color:var(--success)}
+.score-card .number.medium{color:var(--accent)}
+.score-card .number.low{color:var(--error)}
+.score-card .unit{font-size:.75rem;color:var(--text-muted)}
+.score-card .badge{
+  display:inline-block;padding:.18rem .65rem;border-radius:var(--radius-full);
+  font-size:.7rem;font-weight:600;margin-top:.4rem;letter-spacing:.5px;
+}
+.badge.excellent{background:var(--success-bg);color:var(--success);border:1px solid rgba(10,187,135,.2)}
+.badge.qualified{background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-ring)}
+.badge.poor{background:rgba(244,75,91,.1);color:var(--error);border:1px solid rgba(244,75,91,.2)}
+.final-score{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
+  margin:.75rem 0 2rem 0;transition:all .25s;
+}
+.final-score:hover{border-color:var(--accent-ring);box-shadow:var(--shadow-md)}
+.final-score .left{display:flex;align-items:center;gap:.85rem}
+.final-score .icon{
+  width:40px;height:40px;border-radius:var(--radius-md);
+  background:linear-gradient(135deg,var(--accent),var(--purple));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:700;flex-shrink:0;
+}
+.final-score .meta{display:flex;flex-direction:column}
+.final-score .meta .label{font-size:.68rem;color:var(--text-muted);letter-spacing:1.5px;font-weight:600;text-transform:uppercase}
+.final-score .meta .rating{font-size:.95rem;font-weight:600;color:var(--text-primary);margin-top:.1rem}
+.final-score .score-display{display:flex;align-items:baseline;gap:.25rem}
+.final-score .score-display .number{font-size:1.35rem;font-weight:700;color:var(--accent);letter-spacing:-0.03em}
+.final-score .score-display .unit{font-size:.72rem;color:var(--text-muted)}
+.detail-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:.5rem}
+.detail-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.detail-table thead{background:var(--bg-elevated)}
+.detail-table th{
+  color:var(--text-primary);font-weight:600;text-align:left;padding:.65rem .85rem;
+  font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+.detail-table td{
+  padding:.65rem .85rem;border-bottom:1px solid var(--border-light);
+  vertical-align:top;line-height:1.6;color:var(--text-secondary);
+}
+.detail-table tr:last-child td{border-bottom:none}
+.detail-table tr:hover td{background:var(--bg-card-hover)}
+.detail-table .q-col{font-weight:600;color:var(--text-primary);white-space:nowrap}
+.detail-table .score-badge{
+  display:inline-block;padding:.1rem .6rem;border-radius:var(--radius-full);
+  font-weight:600;font-size:.78rem;
+}
+.score-badge.s-excellent{background:var(--success-bg);color:var(--success)}
+.score-badge.s-qualified{background:var(--accent-light);color:var(--accent)}
+.score-badge.s-poor{background:rgba(244,75,91,.1);color:var(--error)}
+.detail-table .answer-text{color:var(--text-secondary);max-width:260px;word-break:break-word}
+.detail-table .ref-text{color:var(--text-muted);font-size:.78rem;max-width:220px;word-break:break-word}
+.comment-box{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.5rem 1.75rem;border-left:4px solid var(--accent);
+}
+.comment-box .text{color:var(--text-secondary);line-height:1.85;font-size:.875rem}
+.comment-box .text strong{color:var(--text-primary);font-weight:600}
+.footer{
+  text-align:center;border-top:1px solid var(--border);padding-top:1.25rem;margin-top:2rem;
+  font-size:.7rem;color:var(--text-muted);letter-spacing:1px;font-weight:400;
+}
+@media(max-width:768px){
+  .container{padding:1.5rem 1rem}
+  .header h1{font-size:1.35rem}
+  .info-grid{grid-template-columns:1fr 1fr;gap:.4rem 1rem}
+  .info-section{padding:1.25rem 1.25rem}
+  .score-summary{grid-template-columns:1fr 1fr}
+  .final-score{flex-direction:column;gap:.75rem;text-align:center}
+  .final-score .left{flex-direction:column;align-items:center}
+  .final-score .score-display{justify-content:center}
+  .detail-table{font-size:.78rem}
+  .detail-table th,.detail-table td{padding:.5rem .6rem}
+  .detail-table .ref-text{display:none}
+  .comment-box{padding:1.25rem 1.25rem}
+}
+@media(max-width:480px){
+  .container{padding:1rem .75rem}
+  .info-grid{grid-template-columns:1fr}
+  .score-summary{grid-template-columns:1fr}
+  .header h1{font-size:1.15rem}
+}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
+@media print{
+  body{background:var(--bg-primary);padding:0}
+  .container{box-shadow:none;border:none;border-radius:0;padding:2rem}
+  .score-card:hover{transform:none;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="company">HENGXIN DIGITAL TECHNOLOGY</div>
+    <div class="badge-line">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+    <h1>面试综合评估报告</h1>
+    <div class="subtitle">AI 面试天团 · 多维度人才测评</div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">候选人姓名</div>
+        <div class="value">陈星河</div>
+      </div>
+      <div class="info-item">
+        <div class="label">毕业院校</div>
+        <div class="value">深圳技术大学</div>
+      </div>
+      <div class="info-item">
+        <div class="label">联系邮箱</div>
+        <div class="value">chen.xinghe@example.com</div>
+      </div>
+      <div class="info-item">
+        <div class="label">面试岗位</div>
+        <div class="value"><span class="highlight">AI Agent工程师</span></div>
+      </div>
+      <div class="info-item">
+        <div class="label">面试日期</div>
+        <div class="value">2026-10-27</div>
+      </div>
+      <div class="info-item">
+        <div class="label">报告生成</div>
+        <div class="value">2026-10-27 20:51:47</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="num">01</span> 各维度得分汇总
+  </div>
+  <div class="score-summary">
+    <div class="score-card">
+      <div class="label">技术面试</div>
+      <div class="number high">8.0</div>
+      <div class="unit">/ 10.0</div>
+      <div class="badge excellent">优秀</div>
+    </div>
+    <div class="score-card">
+      <div class="label">HR 面试</div>
+      <div class="number high">8.3</div>
+      <div class="unit">/ 10.0</div>
+      <div class="badge excellent">优秀</div>
+    </div>
+    <div class="score-card" style="border-left:4px solid var(--accent);">
+      <div class="label">综合评分</div>
+      <div class="number" style="color:var(--accent);">8.1</div>
+      <div class="unit">/ 10.0</div>
+    </div>
+  </div>
+
+  <div class="final-score">
+    <div class="left">
+      <div class="icon">&#9733;</div>
+      <div class="meta">
+        <div class="label">综合评级</div>
+        <div class="rating">强烈推荐</div>
+      </div>
+    </div>
+    <div class="score-display">
+      <span class="number">8.1</span>
+      <span class="unit">/ 10.0</span>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="num">02</span> 技术面试各题评分明细
+  </div>
+  <div class="detail-table-wrap">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th style="width:6%;">题号</th>
+          <th style="width:20%;">题目</th>
+          <th style="width:12%;">考察目的</th>
+          <th style="width:18%;">候选人答案</th>
+          <th style="width:18%;">参考答案</th>
+          <th style="width:8%;">得分</th>
+          <th style="width:18%;">评分依据</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="q-col">Q1</td><td>请通俗说明 AI Agent 的定义，以及与传统对话机器人、普通 RAG 问答机器人的核心差异。</td><td>核实候选人基础认知，区分新手与实操型技术人员。</td><td class="answer-text">传统对话机器人是“你问它答”；普通 RAG 问答是“先查资料再回答”；AI Agent 会围绕目标拆解任务、调用工具、检查结果并继续执行。</td><td class="ref-text">Agent 具备目标驱动、任务规划、工具调用、状态记忆和基于反馈迭代行动的能力。</td><td><span class="score-badge s-excellent">8</span></td><td>概念区分准确，能说明目标驱动和工具调用，案例深度略可加强。</td></tr>
+<tr><td class="q-col">Q2</td><td>Agent 常见的 ReAct 与 Plan-and-Execute 规划方式有什么区别？生产环境如何避免循环执行？</td><td>考察规划、反思与任务终止控制能力。</td><td class="answer-text">ReAct 每一步边思考边行动，灵活但可能反复试错；Plan-and-Execute 先生成计划再执行，便于审计但计划可能失效。生产上会设置最大步数、预算和超时，并用状态机与结果验证器判断终止。</td><td class="ref-text">比较两种规划模式，并用最大步数、预算、超时、显式状态和验证器控制循环。</td><td><span class="score-badge s-excellent">8</span></td><td>能比较两类模式并给出多层终止保护，缺少线上故障案例。</td></tr>
+<tr><td class="q-col">Q3</td><td>请说明 RAG 的核心流程，并给出两个提高检索召回率的工程手段。</td><td>考察知识库构建、检索与生成链路。</td><td class="answer-text">流程包括文档解析、分块、向量化、索引、查询改写、召回、重排和生成。提高召回可以增加关键词与向量混合检索，并优化分块和元数据过滤。</td><td class="ref-text">覆盖解析、分块、嵌入、索引、召回、重排和生成；可采用混合检索、查询改写、元数据过滤等手段。</td><td><span class="score-badge s-qualified">7</span></td><td>主流程正确，优化手段有效，但对评估闭环说明较少。</td></tr>
+<tr><td class="q-col">Q4</td><td>在 Agent 中接入 MCP 工具时，如何设计工具边界与最小权限控制？</td><td>考察工具协议理解、权限控制和生产安全意识。</td><td class="answer-text">每个 MCP 服务只暴露完成任务必需的工具，按用户和任务做最小权限授权；高风险写操作需要参数校验、二次确认和审计日志，敏感凭证放在服务端密钥管理中。</td><td class="ref-text">按职责拆分工具，最小权限、输入校验、人工确认、审计和密钥隔离。</td><td><span class="score-badge s-excellent">9</span></td><td>覆盖权限、确认、审计和密钥隔离，安全设计完整。</td></tr>
+<tr><td class="q-col">Q5</td><td>如何评估一个 AI Agent 是否适合上线？请给出指标和灰度发布方案。</td><td>考察评估、可观测性与生产发布能力。</td><td class="answer-text">先构建真实任务集，评估成功率、工具调用正确率、事实一致性、延迟和成本；上线前做离线回归和红队测试，再按用户比例灰度，监控失败率和人工接管率。</td><td class="ref-text">使用任务成功率、工具调用准确率、事实性、安全、延迟和成本指标，并结合离线评测、灰度和监控。</td><td><span class="score-badge s-excellent">8</span></td><td>指标和灰度路径完整，缺少具体阈值示例。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">
+    <span class="num">03</span> HR 面试各题评分明细
+  </div>
+  <div class="detail-table-wrap">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th style="width:6%;">题号</th>
+          <th style="width:20%;">题目</th>
+          <th style="width:12%;">考察目的</th>
+          <th style="width:18%;">候选人答案</th>
+          <th style="width:18%;">参考答案</th>
+          <th style="width:8%;">得分</th>
+          <th style="width:18%;">评分依据</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="q-col">Q1</td><td>请简单介绍你自己，并说明为什么希望成为 AI Agent 工程师。</td><td>考察自我认知、动机与岗位匹配度。</td><td class="answer-text">我在校期间做过 RAG 知识库和工具调用项目，发现多步骤任务比单轮问答更有挑战。我希望把工程能力用于真实业务流程，让 Agent 稳定地解决问题。</td><td class="ref-text">经历、能力与岗位动机相互印证，目标清晰。</td><td><span class="score-badge s-excellent">8</span></td><td>经历与岗位匹配，动机真实清晰。</td></tr>
+<tr><td class="q-col">Q2</td><td>请分享一次团队分歧或项目冲突，你是如何推动问题解决的？</td><td>考察沟通协作、冲突处理和责任感。</td><td class="answer-text">项目中算法与前端对响应速度判断不一致，我把双方指标整理成一次基准测试，拆分模型耗时和渲染耗时，最后确定先做流式返回再优化检索，按数据推进而不是争论。</td><td class="ref-text">以事实和共同目标推进，体现倾听、分析和行动。</td><td><span class="score-badge s-excellent">9</span></td><td>用数据解决分歧，行动和责任边界清楚。</td></tr>
+<tr><td class="q-col">Q3</td><td>你如何规划未来两年的成长？为什么选择我们公司？</td><td>考察职业规划、稳定性和文化匹配。</td><td class="answer-text">第一年补齐 Agent 工程化和评测体系，第二年独立负责一个业务场景并沉淀可复用组件。选择恒信是因为业务场景丰富，同时强调 AI 落地，我希望在真实场景中持续迭代。</td><td class="ref-text">规划具体、节奏合理，并与公司业务结合。</td><td><span class="score-badge s-excellent">8</span></td><td>阶段目标明确，与业务方向匹配。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">
+    <span class="num">04</span> 综合评语
+  </div>
+  <div class="comment-box">
+    <div class="text">候选人在技术能力和综合素质两方面均表现优异。技术边界清晰，能够从规划、工具调用、知识检索、权限控制到上线评估形成完整闭环；沟通中能够以事实推动协作，职业目标与岗位方向一致。综合评估为<strong>强烈推荐</strong>，建议优先进入下一轮。</div>
+  </div>
+
+  <div class="footer">
+    本报告由 AI 面试天团 · 人才测评专员 自动生成 &nbsp;|&nbsp; 仅供内部参考使用
+  </div>
+
+</div>
+</body>
+</html>

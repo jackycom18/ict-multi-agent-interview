@@ -1,0 +1,3 @@
+- **作品目录**：C:\Users\Xzj13\Desktop\pro\multi-agent-interview-practice
+- **作品名称**：Agent办公实践AI面试协同团队实践
+- **作品简介**：本实践基于 多智能体协作（Multi-Agent） 思路，将传统“单 AI 全包”的面试模式升级为“AI 面试天团”团队协作模式，解决企业招聘中面试官成本高、评估标准不统一、人为偏见难避免三大痛点。
